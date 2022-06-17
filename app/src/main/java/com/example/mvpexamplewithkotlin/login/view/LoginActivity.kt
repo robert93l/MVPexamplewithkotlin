@@ -13,8 +13,8 @@ import com.example.mvpexamplewithkotlin.login.presenter.LoginPresenter
 
 class LoginActivity : AppCompatActivity(), ILoginView {
 
-    private lateinit var textViewLoginResultInfo : TextView
-    private lateinit var buttonLogin : Button
+    private lateinit var textViewLoginResultInfo: TextView
+    private lateinit var buttonLogin: Button
     private lateinit var edittextID: EditText
     private lateinit var edittextPW: EditText
     private lateinit var frameLayoutProgress: FrameLayout
@@ -30,11 +30,11 @@ class LoginActivity : AppCompatActivity(), ILoginView {
         setListener()
     }
 
-    private fun initPresenter(){
+    private fun initPresenter() {
         iLoginPresenter = LoginPresenter(iLoginView = this)
     }
 
-    private fun findView(){
+    private fun findView() {
         textViewLoginResultInfo = findViewById(R.id.textViewLoginResultInfo)
         buttonLogin = findViewById(R.id.buttonLogin)
         edittextID = findViewById(R.id.editTextId)
@@ -42,16 +42,19 @@ class LoginActivity : AppCompatActivity(), ILoginView {
         frameLayoutProgress = findViewById(R.id.frameLayoutProgress)
     }
 
-    private fun setListener(){
-        buttonLogin.setOnClickListener{
+    private fun setListener() {
+        buttonLogin.setOnClickListener {
 
-            iLoginPresenter.login(id = edittextID.text.toString().trim(), password = edittextPW.text.toString().trim())
+            iLoginPresenter.login(
+                id = edittextID.text.toString().trim(),
+                password = edittextPW.text.toString().trim()
+            )
 
         }
     }
 
     override fun onClear() {
-       edittextID.setText("")
+        edittextID.setText("")
         edittextPW.setText("")
     }
 
